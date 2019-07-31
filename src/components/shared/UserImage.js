@@ -4,7 +4,7 @@ import './style/style.scss';
 function UserImage(props) {
     return (
         <div className="user-image">
-            <img src={require('../../assets/img/img_avatar.png')} alt="geo" />
+            <img src={props.userImage} alt="geo" />
         </div>
     );
 }
