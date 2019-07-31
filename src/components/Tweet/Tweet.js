@@ -41,13 +41,17 @@ class Tweet extends Component {
         this.setState({currentState});
     }
 
+    registerComment = (comment) => {
+
+    }
+
 
     render() {
         return (
             <div>
                 <UserInfo userInfo={this.getUserInfoData} />
                 <TweetBody tweetBody={this.getTweetBodyData} />
-                <TweetFooter tweetFooter={this.getTweetFooterData} getRetweet={this.registerRetweet} getLike={this.registerLike} />
+                <TweetFooter tweetFooter={this.getTweetFooterData} getRetweet={this.registerRetweet} getLike={this.registerLike} getComment={this.registerComment} />
             </div>
         )
     }

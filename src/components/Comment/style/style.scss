@@ -1,0 +1,44 @@
+@import '../../../variables';
+
+.comment {
+    margin-top: 50px;
+
+    &-interaction {
+        display: flex;
+        justify-content: space-between;
+    }
+
+    textarea {
+        border:none;
+        background-image: none;
+        background-color:transparent;
+        -webkit-box-shadow: none;
+        -moz-box-shadow: none;
+        box-shadow: none;
+        font-size: 20px;
+        outline: none;
+        resize: none;
+        width: 500px;
+    }
+
+    .close-button {
+        cursor: pointer;
+
+        & img {
+            height: 30px;
+        }
+    }
+
+    .reply-button {
+        background-color: $main-blue-color;
+        border: 0;
+        border-radius: 9999px;
+        color: $button-text-color;
+        cursor: pointer;
+        font-size: 16px;
+        font-weight: 800;
+        outline: 0;
+        padding: 5px 20px;
+    }
+}
+

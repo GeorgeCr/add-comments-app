@@ -13,6 +13,10 @@ class TweetFooter extends Component {
         this.props.getLike(like);
     }
 
+    attemptComment = () => {
+        this.props.getComment();
+    }
+
     render() {
         const { tweetContent, tweetTime, tweetDate, tweetDevice, ...tweetLikes} = this.props.tweetFooter();
         const tweetDateTime = { tweetTime, tweetDate, tweetDevice };
@@ -20,7 +24,7 @@ class TweetFooter extends Component {
             <div>
                 <TweetFooterDate tweetTimeDevice={tweetDateTime} />
                 <TweetFooterLikes tweetLikesRetweets={tweetLikes} />
-                <TweetFooterInteract passRetweet={this.sendRetweet} passLike={this.sendLike} />
+                <TweetFooterInteract passRetweet={this.sendRetweet} passLike={this.sendLike} passComment={this.attemptComment} />
         </div> 
         )
     }
