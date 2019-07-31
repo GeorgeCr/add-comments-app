@@ -5,3 +5,50 @@
     font-size: 24px;
     padding: 20px 0;
 }
+
+.tweet-footer-date {
+    color: $secondary-text-color;
+    display: flex;
+    
+    .separator {
+        padding: 0 5px;
+    }
+
+    .tweet-device {
+        color: $main-blue-color;
+    }
+}
+
+.tweet-footer-likes {
+    display: flex;
+    margin: 25px 0;
+    
+    .tweet-hits {
+        color: $secondary-text-color;
+        margin-right: 20px;
+
+
+        span {
+            color: $main-text-color;
+            font-weight: 700;
+        }
+    }
+}
+
+.tweet-footer-interact  {
+    display: flex;
+
+    img {
+        margin-right: 50px;
+    }
+
+    & img.comment-icon {
+        height: 16px;
+    }
+
+    & img.retweet-icon, & img.like-icon {
+        height: 20px;
+    }
+}
+
+
