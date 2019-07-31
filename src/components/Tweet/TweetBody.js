@@ -2,7 +2,7 @@ import React from 'react';
 
 function TweetBody(props) {
     return (
-        <div>lorem ipsum sadasdlasdasda lorem ipsum sadasdlasdasda lorem ipsum sadasdlasdasda lorem ipsum sadasdlasdasda lorem ipsum sadasdlasdasda lorem ipsum sadasdlasdasda lorem ipsum sadasdlasdasda lorem ipsum sadasdlasdasda lorem ipsum sadasdlasdasda </div>
+        <div className="tweet-body">lorem ipsum sadasdlasdasda lorem ipsum sadasdlasdasda lorem ipsum sadasdlasdasda lorem ipsum sadasdlasdasda lorem ipsum sadasdlasdasda lorem ipsum sadasdlasdasda lorem ipsum sadasdlasdasda lorem ipsum sadasdlasdasda lorem ipsum sadasdlasdasda </div>
     );
 }
 
