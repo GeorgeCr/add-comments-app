@@ -76,8 +76,7 @@ class Tweet extends Component {
                 <TweetBody tweetBody={this.getTweetBodyData} />
                 <TweetFooter 
                 tweetFooter={this.getTweetFooterData} handleLike={this.registerLike} handleRetweet={this.registerRetweet} handleComment={this.registerCommentForm} />
-                {/* <CommentForm /> */}
-                {this.state.tweet.isCommentFormOpen ? <CommentForm /> : null}
+                {this.state.tweet.isCommentFormOpen ? <CommentForm tweetFooterData={this.getTweetFooterData} handleFormClose={this.registerCommentForm} /> : null}
             </div>
         )
     }
