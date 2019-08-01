@@ -5,26 +5,34 @@ import TweetFooterInteract from './TweetFooterInteract';
 
 class TweetFooter extends Component {
 
-    sendRetweet = (tweet) => {
-        this.props.getRetweet(tweet);
+    handleLike = (likeValue) => {
+        return this.props.handleLike(likeValue);
     }
 
-    sendLike = (like) => {
-        this.props.getLike(like);
+    handleRetweet = (retweetValue) => {
+        return this.props.handleRetweet(retweetValue);
     }
 
-    attemptComment = (commentingState) => {
-        this.props.getComment(commentingState);
+    handleComment = (commentValue) => {
+        return this.props.handleComment(commentValue);
     }
 
     render() {
-        const { tweetContent, tweetTime, tweetDate, tweetDevice, ...tweetLikes} = this.props.tweetFooter();
+        const { tweetTime, tweetDate, tweetDevice, tweetRetweets, tweetLikes } = this.props.tweetFooter();
+        const tweetsAndRetweets = { tweetRetweets, tweetLikes };
         const tweetDateTime = { tweetTime, tweetDate, tweetDevice };
+        const { isLiked, isRetweeted, isCommentFormOpen } = this.props.tweetFooter();
+        const tweetInteractivity = { isLiked, isRetweeted, isCommentFormOpen };
         return (
             <div>
                 <TweetFooterDate tweetTimeDevice={tweetDateTime} />
-                <TweetFooterLikes tweetLikesRetweets={tweetLikes} />
-                <TweetFooterInteract passRetweet={this.sendRetweet} passLike={this.sendLike} passComment={this.attemptComment} />
+                <TweetFooterLikes tweetLikesRetweets={tweetsAndRetweets} />
+                <TweetFooterInteract 
+                tweetInteractivity={tweetInteractivity} 
+                likeHandler={this.handleLike} 
+                retweetHandler={this.handleRetweet} 
+                commentHandler={this.handleComment}
+                />
         </div> 
         )
     }
