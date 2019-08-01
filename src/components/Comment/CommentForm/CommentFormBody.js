@@ -6,8 +6,8 @@ class CommentFormBody extends Component {
 
         this.state = {
             commentInput: '',
-            isCommentSent: false,
-            isWindowOpen: true,
+            // isCommentSent: false,
+            // isWindowOpen: true,
         };
     }
 
@@ -24,9 +24,9 @@ class CommentFormBody extends Component {
     }
 
     closeWindowForm = () => {
-        this.setState({
-            isWindowOpen: false
-        });
+        // this.setState({
+        //     isWindowOpen: false
+        // });
     }
 
     render() {
