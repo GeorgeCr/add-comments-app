@@ -4,54 +4,51 @@ import TweetBody from './TweetBody';
 import TweetFooter from './TweetFooter/TweetFooter';
 
 class Tweet extends Component {
-    constructor(props) {
-        super(props);
-
-        this.state = this.props.data;
-    }
-
     getUserInfoData = () => {
-        const  { user } = this.state;
+        const  { user } = this.props.data;
         return user;
     }
 
     getTweetBodyData = () => {
-        const { tweetContent } = this.state.tweet;
+        const { tweetContent } = this.props.data.tweet;
         return tweetContent;
     }
 
     getTweetFooterData = () => {
-        const { tweetContent, ...tweetFooterData } = this.state.tweet;
+        const { tweetContent, ...tweetFooterData } = this.props.data.tweet;
         return tweetFooterData;
     }
 
     registerRetweet = (retweet) => {
-        const currentState = this.state;
-        let numRetweets = parseInt(currentState.tweet.tweetRetweets);
+        const currentData = this.props.data;
+        let numRetweets = parseInt(currentData.tweet.tweetRetweets);
         numRetweets += retweet;
-        currentState.tweet.tweetRetweets = numRetweets.toString();
-        this.setState({currentState});
+        currentData.tweet.tweetRetweets = numRetweets.toString();
+        this.props.onRetweet(currentData);
     }
 
     registerLike = (like) => {
-        const currentState = this.state;
-        let numLikes = parseInt(currentState.tweet.tweetLikes);
+        const currentData = this.props.data;
+        let numLikes = parseInt(currentData.tweet.tweetLikes);
         numLikes += like;
-        currentState.tweet.tweetLikes = numLikes.toString();
-        this.setState({currentState});
+        currentData.tweet.tweetLikes = numLikes.toString();
+        this.props.onLike(currentData);
     }
 
-    registerComment = (comment) => {
-
+    registerComment = (commentState) => {
+        this.props.onComment(commentState);
     }
-
 
     render() {
         return (
             <div>
                 <UserInfo userInfo={this.getUserInfoData} />
                 <TweetBody tweetBody={this.getTweetBodyData} />
-                <TweetFooter tweetFooter={this.getTweetFooterData} getRetweet={this.registerRetweet} getLike={this.registerLike} getComment={this.registerComment} />
+                <TweetFooter 
+                tweetFooter={this.getTweetFooterData} 
+                getRetweet={this.registerRetweet} 
+                getLike={this.registerLike} 
+                getComment={this.registerComment} />
             </div>
         )
     }
