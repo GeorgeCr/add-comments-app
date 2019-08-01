@@ -18,6 +18,10 @@ const TWEET_DATA =
             tweetDevice: 'Android',
             tweetRetweets: '54',
             tweetLikes: '18',
+            isCommentFormOpen: false,
+            isLiked: false,
+            isRetweeted: false,
+            comments: []
         }
     };
 

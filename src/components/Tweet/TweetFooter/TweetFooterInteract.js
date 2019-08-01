@@ -8,7 +8,7 @@ class TweetFooterInteract extends Component {
         this.state = {
             liked: false,
             retweeted: false,
-            // commenting: false
+            commenting: true
         }
     }
 
@@ -37,15 +37,16 @@ class TweetFooterInteract extends Component {
         this.setState({
             commenting: !this.state.commenting
         });
-        if (this.state.commenting) {
-            this.props.passComment();
-        }
+        this.props.passComment(this.state.commenting);
     }
 
     render() {
         return (
             <div className="tweet-footer-interact">
-                <img onClick={this.handleCommentClick} className="comment-icon" src={require('../../../assets/img/comment-icon.svg')} alt="comment-icon" />
+                <img onClick={this.handleCommentClick} 
+                className="comment-icon" 
+                src={require('../../../assets/img/comment-icon.svg')} 
+                alt="comment-icon" />
                 <img onClick={this.handleRetweetClick} 
                 className="retweet-icon" 
                 src={this.state.retweeted ? require('../../../assets/img/retweet.svg') : require('../../../assets/img/unretweet.svg')} 

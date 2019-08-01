@@ -13,8 +13,8 @@ class TweetFooter extends Component {
         this.props.getLike(like);
     }
 
-    attemptComment = () => {
-        this.props.getComment();
+    attemptComment = (commentingState) => {
+        this.props.getComment(commentingState);
     }
 
     render() {
