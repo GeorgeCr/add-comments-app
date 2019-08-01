@@ -24,9 +24,8 @@ class CommentFormBody extends Component {
     }
 
     closeWindowForm = () => {
-        // this.setState({
-        //     isWindowOpen: false
-        // });
+        let  { isCommentFormOpen } = this.props.tweetFooterData;
+        this.props.handleFormClose(isCommentFormOpen);
     }
 
     render() {
