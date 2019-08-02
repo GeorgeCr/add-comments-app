@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import Tweet from './components/Tweet/Tweet';
 import './App.scss';
 
-
 class App extends Component {
     render() {
         return (

@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import CommentFormBody from './CommentFormBody';
-import '../style/style.scss';
 
 class CommentForm extends Component {
 
@@ -8,10 +7,14 @@ class CommentForm extends Component {
         this.props.handleFormClose(closed);
     }
 
+    handleCommData = (commData) => {
+        this.props.handleCommData(commData);
+    }
+
     render() {
         return (
             <div className="comment">
-                <CommentFormBody tweetFooterData={this.props.tweetFooterData} handleFormClose={this.handleFormClose}/>
+                <CommentFormBody tweetFooterData={this.props.tweetFooterData} handleFormClose={this.handleFormClose} handleCommData={this.handleCommData} />
             </div>
         )
     }

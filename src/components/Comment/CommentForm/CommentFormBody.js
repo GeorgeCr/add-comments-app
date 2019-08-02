@@ -6,8 +6,6 @@ class CommentFormBody extends Component {
 
         this.state = {
             commentInput: '',
-            // isCommentSent: false,
-            // isWindowOpen: true,
         };
     }
 
@@ -18,9 +16,19 @@ class CommentFormBody extends Component {
     }
 
     fireSend = () => {
-        this.setState({
-            isCommentSent: true
-        });
+        const newComm = {
+            userCommenting: {
+                userName: 'Tonald Drump',
+                image: 'https://www.w3schools.com/howto/img_avatar.png',
+                verified: true,
+                userLink: '@tonaldDrump'
+            },
+            commentContent: this.state.commentInput,
+        }
+        this.props.handleCommData(newComm);
+        // this.setState({
+        //     commentInput: ''
+        // });
     }
 
     closeWindowForm = () => {

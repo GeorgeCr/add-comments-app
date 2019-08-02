@@ -1,23 +1,17 @@
-@import '../../../variables';
-
 .user-info {
     display: flex;
 
     .user-image img {
         border-radius: 50%;
         height: 50px;
-        padding-top: 10px;
+        // padding-top: 10px;
     }
 
     .user-name {
-        padding: 10px 20px 20px 10px;
+        padding: 0 20px 20px 10px;
         
         .user-actual-name {
             font-weight: 700;
-        }
-
-        .user-link {
-            color: $main-blue-color;
         }
 
         img {
