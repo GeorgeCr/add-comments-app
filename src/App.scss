@@ -1,5 +1,15 @@
+@import './variables';
+@import './assets/style/tweet';
+@import './assets/style/userInfo';
+@import './assets/style/commentForm';
+@import './assets/style/resultedComment';
+
 .app {
     margin: 0 auto;
     margin-top: 100px;
     width: 600px;
+}
+
+.user-link {
+    color: $main-blue-color;
 }

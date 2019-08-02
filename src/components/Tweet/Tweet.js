@@ -3,7 +3,7 @@ import UserInfo from '../shared/UserInfo';
 import TweetBody from './TweetBody';
 import TweetFooter from './TweetFooter/TweetFooter';
 import CommentForm from '../Comment/CommentForm/CommentForm';
-import './style/style.scss';
+import ResultedComment from '../Comment/ResultedComment/ResultedComment';
 
 class Tweet extends Component {
     constructor(props) {
@@ -26,7 +26,32 @@ class Tweet extends Component {
                 isCommentFormOpen: false,
                 isLiked: false,
                 isRetweeted: false,
-                comments: []
+                usersCommenting: [
+                    {
+                        userName: 'Jenny Smith',
+                        image: 'https://www.w3schools.com/howto/img_avatar2.png',
+                        verified: false,
+                        userLink: '@jennySmith'
+                    },
+                    {
+                            userName: 'Sally Thompson',
+                            image: 'https://www.w3schools.com/howto/img_avatar2.png',
+                            verified: true,
+                            userLink: '@sallyT'
+                    }
+                ],
+                comments: [
+                        {
+                            commentContent: `LMAO, are you kiddin' me?`,
+                            commentTime: '10:18 PM',
+                            commentDate: 'Jul 31, 2019'
+                        },
+                        {
+                            commentContent: 'LOL, REALLY?????? How....',
+                            commentTime: '6:05 AM',
+                            commentDate: 'Aug 1, 2019'
+                        }
+                ]
             }
         }
     }
@@ -43,6 +68,17 @@ class Tweet extends Component {
     getTweetFooterData = () => {
         const { tweetContent, ...tweetFooterData } = this.state.tweet;
         return tweetFooterData;
+    }
+
+    getCommentingUserInfoData = (index) => {
+        const user = this.state.tweet.usersCommenting[index];
+        return user;
+    }
+
+    getCommentData = (index) => {
+        const { commentContent } = this.state.tweet.comments[index];
+        console.log(commentContent);
+        return commentContent;
     }
 
     registerRetweet = (retweet) => {
@@ -69,14 +105,38 @@ class Tweet extends Component {
         this.setState(currentData);
     }
 
+    registerCommData = (commData) => {
+        const currentData = this.state;
+        currentData.tweet.usersCommenting.push(commData.userCommenting);
+        currentData.tweet.comments.push({
+            commentContent: commData.commentContent
+        });
+        this.setState(currentData);
+        console.log(this.state);
+    }
+
+    getComm(index) {
+        const commentingUserInfoData = this.getCommentingUserInfoData(index);
+        const commentData = this.getCommentData(index);
+        return <ResultedComment 
+            key={index} 
+            userInfo={commentingUserInfoData} 
+            tweetUserLink={this.getUserInfoData} 
+            commentContent={commentData} 
+            />
+    }
+
     render() {
         return (
             <div>
-                <UserInfo userInfo={this.getUserInfoData} />
+                <UserInfo userInfo={this.state.user} />
                 <TweetBody tweetBody={this.getTweetBodyData} />
                 <TweetFooter 
                 tweetFooter={this.getTweetFooterData} handleLike={this.registerLike} handleRetweet={this.registerRetweet} handleComment={this.registerCommentForm} />
-                {this.state.tweet.isCommentFormOpen ? <CommentForm tweetFooterData={this.getTweetFooterData} handleFormClose={this.registerCommentForm} /> : null}
+                {this.state.tweet.isCommentFormOpen ? <CommentForm tweetFooterData={this.getTweetFooterData} handleFormClose={this.registerCommentForm} handleCommData={this.registerCommData} /> : null}
+                {this.state.tweet.comments.map((comm, index) => {
+                    return this.getComm(index);
+                })}
             </div>
         )
     }
